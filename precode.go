@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -54,7 +55,7 @@ func getTasks(w http.ResponseWriter, r *http.Request) {
 
 	bytesWritten, err := w.Write(resp)
 	if err != nil {
-		panic(err)
+		log.Println("Ошибка записи ответа:", err)
 		return
 	}
 	fmt.Printf("Bytes written: %d\n", bytesWritten)
@@ -127,7 +128,7 @@ func getTask(w http.ResponseWriter, r *http.Request) {
 
 	bytesWritten, err := w.Write(resp)
 	if err != nil {
-		panic(err)
+		log.Println("Ошибка записи ответа:", err)
 		return
 	}
 	fmt.Printf("Bytes written: %d\n", bytesWritten)
@@ -149,5 +150,3 @@ func main() {
 		return
 	}
 }
-
-g
